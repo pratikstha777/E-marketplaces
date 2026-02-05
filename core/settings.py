@@ -136,7 +136,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-CROS_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
