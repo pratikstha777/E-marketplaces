@@ -91,8 +91,7 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:postgres@127.0.0.1:5432/postgres',
-        conn_max_age=600
+        default= os.env.get('DATABASE_URL'),
     )
 }
 
