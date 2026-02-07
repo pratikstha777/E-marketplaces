@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 import os
+import warnings
+from dotenv import load_dotenv
 import dj_database_url
 import sys
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-fallback-key-for-local
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+
 
 # Application definition
 
@@ -57,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base")
 
 ROOT_URLCONF = 'core.urls'
 
@@ -87,12 +92,14 @@ CHANNEL_LAYERS = {
         },
     },
 }
+load_dotenv()
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
 DATABASES = {
     'default': dj_database_url.config(
-        default= os.environ.get('DATABASE_URL'),
+        default= DATABASE_URL,
         conn_max_age=600,
         ssl_require=True
     )
@@ -155,3 +162,5 @@ CORS_ALLOWED_ORIGINS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
