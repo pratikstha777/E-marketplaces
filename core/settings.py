@@ -141,7 +141,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://e-marketplaces-web.vercel.app"
+    "https://e-marketplaces-web.vercel.app",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
