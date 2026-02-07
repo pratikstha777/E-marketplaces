@@ -27,8 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-fallback-key-for-local
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -142,6 +141,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CORS_ALLOWED_ORIGINS = [
+    "https://e-marketplaces-web.vercel.app"
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
