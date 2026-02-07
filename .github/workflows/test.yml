@@ -24,6 +24,8 @@ jobs:
           pip install -r requirement.txt
 
       - name: Run Django Tests
+        env:
+          DATABASE_URL: ${{secrets.DATABASE_URL}}
         run: python manage.py test
 
   frontend-tests:
