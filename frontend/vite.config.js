@@ -7,6 +7,9 @@ export default defineConfig({
   test: {
     globals: true,           // Allows using 'describe', 'it', 'expect' without importing them
     environment: 'jsdom',    // Simulates a browser in the terminal
-    setupFiles: './src/setupTests.js', // We will create this next
+    setupFiles: './src/setupTests.js',
+    deps: {
+      inline: [/encoding-lite/],
+    },
   },
 })
