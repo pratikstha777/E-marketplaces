@@ -32,19 +32,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Upgraded from v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # Upgraded from v3
         with:
-          node-version: '18'
+          node-version: '20' # Required for Vitest 4.0+
+          cache: 'npm'
+          cache-dependency-path: './frontend/package-lock.json'
 
       - name: Install Frontend Dependencies
         run: |
           cd frontend
-          npm install
+          npm ci # Better than 'install' for CI; installs exact lockfile versions
 
       - name: Run React Tests
         run: |
           cd frontend
-          npm test 
+          npm test -- --run # The '--run' flag is crucial to prevent watch mode hanging
