@@ -13,7 +13,6 @@
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "core/wsgi.py" },
-    { "source": "/products/(.*)", "destination": "core/wsgi.py" },
     { "source": "/(.*)", "destination": "frontend/index.html" }
   ]
 }
