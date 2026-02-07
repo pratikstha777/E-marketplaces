@@ -2,7 +2,7 @@ const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api/";
 
 export const fetchProducts = async() => {
     try {
-    const response = await fetch(`${API_URL}products/`);
+    const response = await fetch(`${API_URL}/products/`);
     if(!response.ok) throw new Error("Network response was not ok");
     return await response.json();
     } catch (error) {
